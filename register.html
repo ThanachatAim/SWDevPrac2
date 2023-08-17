@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="th">
+    <head>
+        <title>Register Form</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link href='https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <h1 id="register_head"><span>ลงทะเบียนผู้สนใจเช่าพื้นที่</span></h1>
+        <form>
+            ชื่อบริษัท: <input type="text" id="company_name" name="company_name" placeholder="Company Name" size="30"> <br>
+            ขนาดบูธ: 
+            <select id="boot_size" name="boot_size" size="1">
+                <option value="10x10">10x10</option>
+                <option value="10x11">10x11</option>
+                <option value="10x12">10x12</option>
+                <option value="10x13">10x13</option>
+                <option value="10x14">10x14</option>
+                <option value="10x15">10x15</option>
+            </select> ฟุต <br>
+            <input type="checkbox" id="need_table" name="need_table" checked> ต้องการโต๊ะตั้งในบูธ <br>
+            จำนวนเก้าอี้: <input type="number" id="chair" name="chair" size="1" value="0"> <br>
+            ชื่อผู้ติดต่อ: <input type="text" id="contract_name" name="contract_name" placeholder="สมชาย ใจดี" size="30"> <br>
+            เบอร์ผู้ติดต่อ: <input type="text" id="contract_phone" name="contract_phone" placeholder="012356789" size="10"> <br>
+            <input type="submit"> 
+        </form>
+    </body>
+</html>
