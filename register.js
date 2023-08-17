@@ -12,7 +12,7 @@ function check() {
         alert("Empty Boot Size isn't allow")
     }
     else if (document.getElementById("chair").value < 1 || document.getElementById("chair").value > 10){
-        alert("Input must be 1-10")
+        alert("Chairs number must be 1-10")
     }
     else {
         alert("OK")

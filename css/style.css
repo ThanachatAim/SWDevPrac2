@@ -64,7 +64,7 @@ select {
     font-family: 'Kanit', sans-serif;
 }
 
-input[type="submit"] {
+input[type="button"] {
     margin-left: 225px;
 }
 
