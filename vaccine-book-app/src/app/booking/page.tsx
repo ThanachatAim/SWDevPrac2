@@ -13,7 +13,8 @@ export default function Booking() {
                     name="name"
                     id="name"
                     autoComplete="name"
-                    className="rounded ring-1 ring-inset flex-1 border-1 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                    className="rounded ring-1 ring-inset flex-1 border-1 bg-transparent py-1.5 pl-1 
+                    text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                     placeholder="สมชาย"
                   />
                 <label htmlFor="surname" className="block text-sm font-medium leading-6 text-gray-900">
@@ -24,18 +25,20 @@ export default function Booking() {
                     name="surname"
                     id="surname"
                     autoComplete="surname"
-                    className="rounded ring-1 ring-inset flex-1 border-1 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                    className="rounded ring-1 ring-inset flex-1 border-1 bg-transparent py-1.5 pl-1 
+                    text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                     placeholder="ใจดี"
                   />
-                <label htmlFor="surname" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="citizen" className="block text-sm font-medium leading-6 text-gray-900">
                 Citizen ID
                 </label>
                 <input
                     type="text"
-                    name="surname"
-                    id="surname"
-                    autoComplete="surname"
-                    className="rounded ring-1 ring-inset flex-1 border-1 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                    name="citizen"
+                    id="citizen"
+                    autoComplete="citizen"
+                    className="rounded ring-1 ring-inset flex-1 border-1 bg-transparent py-1.5 pl-1 
+                    text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                     placeholder="1234567890000"
                   />
                 <div className="text-md text-left text-gray-600">Select Date and Location</div>
