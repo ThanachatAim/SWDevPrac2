@@ -4,7 +4,7 @@ import ProductCard from "./ProductCard"
 
 export default function CardPanel() {
 
-    const ratingReducer = ( ratingMap:Map<string,number>, action:{type:string, vacName:string, rating:number})=>{
+    const ratingReducer = ( ratingMap:Map<string,number | null>, action:{type:string, vacName:string, rating:number | null})=>{
         switch(action.type){
             case 'add': {
                 return new Map(ratingMap.set(action.vacName, action.rating))
@@ -19,7 +19,6 @@ export default function CardPanel() {
 
     const [ratingMap, dispatchRating] = useReducer(ratingReducer, new Map<string,number>())
     
-
     return (
         <div>
             <div className="m-10 flex flex-row flex-wrap justify-around items-around">
@@ -34,9 +33,9 @@ export default function CardPanel() {
                 rating={ratingMap.get("Thammasat University Hospital") ?? 0}/>
             </div>
             <div className='w-full text-xl font-medium'>Rating List:{ratingMap.size}</div>
-            {Array.from(ratingMap).map( ([vac,rating])=><div key={vac} 
+            {Array.from(ratingMap.entries()).map( ([vac,rating])=><div key={vac} 
                 onClick={()=>dispatchRating({type:'remove',vacName:vac, rating:rating})}>
-                {vac} Rating = {rating}</div>)}
+                {vac}: Rating = {rating}</div>)}
         </div>
     )
 }
