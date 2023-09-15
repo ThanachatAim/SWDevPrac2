@@ -32,9 +32,9 @@ export default function CardPanel() {
                 onRatingUpdate={(vac:string, rating: number)=>dispatchRating({type:'add', vacName:vac, rating:rating})} 
                 rating={ratingMap.get("Thammasat University Hospital") ?? 0}/>
             </div>
-            <div className='w-full text-xl font-medium'>Rating List:{ratingMap.size}</div>
+            <div className='w-full text-xl font-medium mx-2'>Rating List:{ratingMap.size}</div>
             {Array.from(ratingMap.entries()).map( ([vac,rating])=><div key={vac} 
-                onClick={()=>dispatchRating({type:'remove',vacName:vac, rating:rating})}>
+                onClick={()=>dispatchRating({type:'remove',vacName:vac, rating:rating})} className='mx-2'>
                 {vac}: Rating = {rating}</div>)}
         </div>
     )

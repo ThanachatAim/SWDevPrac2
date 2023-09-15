@@ -26,7 +26,7 @@ export default function ProductCard({vacName,imgSrc,onRatingUpdate, rating}
             <Rating name="simple-controlled" value={rating} onChange={(event, newValue) => {
                  event.stopPropagation();
                  setValue(newValue);
-                onRatingUpdate(vacName, newValue ?? 0)}} className='my-1'/>
+                onRatingUpdate(vacName, newValue ?? 0)}} className='mx-2'/>
         </InteractiveCard>
     );
 }
