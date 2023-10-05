@@ -23,10 +23,13 @@ export default function ProductCard({vacName,imgSrc,onRatingUpdate, rating}
                 />
             </div>
             <div className='w-full h-30 p-[10px] font-kanit'>{vacName}</div>
+            <div onClick={(e) => e.stopPropagation()}>
             <Rating name="simple-controlled" value={rating} onChange={(event, newValue) => {
                  event.stopPropagation();
+                 event.preventDefault();
                  setValue(newValue);
                 onRatingUpdate(vacName, newValue ?? 0)}} className='mx-2'/>
+            </div>
         </InteractiveCard>
     );
 }
