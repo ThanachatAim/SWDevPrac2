@@ -1,9 +1,20 @@
 'use client'
-import {useReducer} from 'react'
+import {useReducer, useEffect, useState} from 'react'
 import ProductCard from "./ProductCard"
 import Link from 'next/link'
+import { getHospitals } from '@/libs/getHospitals'
 
 export default function CardPanel() {
+
+    const [hospitalResponse, setHospitalResponse] = useState(null)
+
+    useEffect(()=>{
+        const fetchData =async ()=>{
+            const hospitals = await getHospitals()
+            setHospitalResponse(hospitals)
+        }
+        fetchData()
+    },[])
 
     const ratingReducer = ( ratingMap:Map<string,number | null>, action:{type:string, vacName:string, rating:number | null})=>{
         switch(action.type){
@@ -20,19 +31,21 @@ export default function CardPanel() {
 
     const [ratingMap, dispatchRating] = useReducer(ratingReducer, new Map<string,number>())
     
-    const mockHospitalRepo = [
-        {hid: '001', name: 'Chulalongkorn Hospital', image: "/img/chula.jpg"},
-        {hid: '002', name: 'Rajavithi Hospital', image: "/img/rajavithi.jpg"},
-        {hid: '003', name: 'Thammasat University Hospital', image: "/img/thammasat.jpg"},
-    ]
+    // const mockHospitalRepo = [
+    //     {hid: '001', name: 'Chulalongkorn Hospital', image: "/img/chula.jpg"},
+    //     {hid: '002', name: 'Rajavithi Hospital', image: "/img/rajavithi.jpg"},
+    //     {hid: '003', name: 'Thammasat University Hospital', image: "/img/thammasat.jpg"},
+    // ]
+
+    if(!hospitalResponse) return (<p>Hospital Panel is Loading ...</p>)
 
     return (
         <div>
             <div className="m-10 flex flex-row flex-wrap justify-around items-around">
                                 
-            {mockHospitalRepo.map((vacItem)=>(
-                    <Link href={`/hospital/${vacItem.hid}`} className='w-1/5'>
-                    <ProductCard vacName={vacItem.name} imgSrc={vacItem.image}
+            {hospitalResponse.data.map((vacItem:Object)=>(
+                    <Link href={`/hospital/${vacItem.id}`} className='w-1/5'>
+                    <ProductCard vacName={vacItem.name} imgSrc={vacItem.picture}
                     onRatingUpdate={(vac:string, rating: number)=>dispatchRating({type:'add', vacName:vac, rating:rating})} 
                     rating={ratingMap.get(vacItem.name) ?? 0}/>
                     </Link>

@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image';
 import InteractiveCard from './InteractiveCard';
 import { Rating } from '@mui/material';
@@ -5,7 +6,7 @@ import { useState } from "react";
 
 
 export default function ProductCard({vacName,imgSrc,onRatingUpdate, rating}
-    :{vacName:string, imgSrc:string, onRatingUpdate:Function, rating:number}) {
+    :{vacName:string, imgSrc:string, onRatingUpdate?:Function, rating?:number}) {
 
     function onVacSelected(){
         alert("You Select " + vacName)
@@ -23,13 +24,16 @@ export default function ProductCard({vacName,imgSrc,onRatingUpdate, rating}
                 />
             </div>
             <div className='w-full h-30 p-[10px] font-kanit'>{vacName}</div>
-            <div onClick={(e) => e.stopPropagation()}>
-            <Rating name="simple-controlled" value={rating} onChange={(event, newValue) => {
-                 event.stopPropagation();
-                 event.preventDefault();
-                 setValue(newValue);
-                onRatingUpdate(vacName, newValue ?? 0)}} className='mx-2'/>
-            </div>
+            {
+                onRatingUpdate? <div onClick={(e) => e.stopPropagation()}>
+                <Rating name="simple-controlled" value={rating} onChange={(event, newValue) => {
+                     event.stopPropagation();
+                     event.preventDefault();
+                     setValue(newValue);
+                    onRatingUpdate(vacName, newValue ?? 0)}} className='mx-2'/>
+                </div> : ''
+            }
+            
         </InteractiveCard>
     );
 }
