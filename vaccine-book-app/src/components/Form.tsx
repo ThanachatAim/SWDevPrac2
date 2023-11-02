@@ -17,7 +17,7 @@ export default function Form(){
     const citizenIdRef = useRef<HTMLInputElement>(null);
 
     const [vaccineDate, setVacineDate] = useState<Dayjs|null>(null)
-    const [vaccineLocation, setVacineLocation] = useState<string>("")
+    const [vaccineLocation, setVacineLocation] = useState<string>("Chula")
 
     const dispatch = useDispatch<AppDispatch>()
 

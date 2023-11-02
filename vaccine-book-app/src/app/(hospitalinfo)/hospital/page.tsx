@@ -3,9 +3,19 @@ import { getHospitals } from "@/libs/getHospitals"
 import { Suspense } from "react"
 import { LinearProgress } from "@mui/material"
 import CardPanel from "@/components/CardPanel"
+import getUserProfile from "@/libs/getUserProfile";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import AddHospitalForm from "@/components/AddHospitalForm"
 
-export default function Hospital(){
+export default async function Hospital(){
     const hospitals = getHospitals()
+    let profile = null;
+
+    const session = await getServerSession(authOptions);
+    if (session) {
+        profile = await getUserProfile(session.user.token);
+      }
 
     return (
         <main className="text-center p-5">
@@ -14,9 +24,11 @@ export default function Hospital(){
             <HospitalCatalog hospitalJson={hospitals}/>
             </Suspense>
 
-            {/* <hr className="my-10"/>
-            <h1 className="text-xl font-medium"> TRY Client-side Hospital Panel</h1>
-            <CardPanel/> */}
+            {
+                (profile?.data.role == "admin")?
+                <AddHospitalForm />
+                : null
+            }
         </main>
     )
 }
