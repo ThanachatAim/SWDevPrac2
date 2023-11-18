@@ -17,6 +17,7 @@ export function PromoteCard(){
             <div className="m-5 my-2 text-lg">Get your vaccine today.
             <button className='block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2
                 text-white shadow-sm mt-36'
+                test-id="video-button"
                 onClick={()=>{setPlaying(!playing)}}>
                     {playing? 'Pause':'Play'}
                 </button>
